@@ -1,4 +1,4 @@
-let gold = 100;
+let gold = 10000000000;
 let mines = [];
 let mineBaseCost = 100;
 let elevator = {
