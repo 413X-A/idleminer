@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Idle Miner Tycoon - Arbeiter & Aufzug Demo</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<h1>Idle Miner Tycoon (Demo)</h1>
+<div id="gold">Gold: 0</div>
+<div id="buttons">
+  <button onclick="buyMine()">Neue Mine kaufen (Kosten: <span id="mineCost">100</span>)</button>
+  <button onclick="upgradeElevator()">Aufzug upgraden (Kosten: <span id="elevatorCost">200</span>)</button>
+</div>
+
+<div class="game-container">
+  <div class="elevator-shaft">
+    <div id="elevator">⬇️</div>
+  </div>
+  <div class="mines" id="mines"></div>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
