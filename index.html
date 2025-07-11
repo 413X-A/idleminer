@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Idle Miner Tycoon 2D</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="game-container">
+    <h1>Idle Miner Tycoon 2D</h1>
+    <div class="stats">
+      <div>💰 Geld: <span id="money">0</span></div>
+      <div>⛏️ Ertrag pro Sekunde: <span id="income">1</span></div>
+    </div>
+    <button id="mineButton">Manuell minen (+10)</button>
+    <button id="upgradeButton">Upgrade Ertrag (Kosten: 50)</button>
+    <canvas id="minerCanvas" width="400" height="200"></canvas>
+  </div>
+  <script src="script.js"></script>
+</body>
+</html>
