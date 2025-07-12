@@ -27,10 +27,25 @@
       font-size: 1.2rem;
     }
 
+    .controls {
+      padding: 1rem;
+      background: #ccc;
+      display: flex;
+      justify-content: space-around;
+    }
+
+    button {
+      padding: 0.5rem 1rem;
+      font-size: 1rem;
+    }
+
     #gameArea {
       display: flex;
+      flex-direction: row-reverse;
       position: relative;
       height: 80vh;
+      width: 400px;
+      margin: 0 auto;
       overflow-y: scroll;
       background: #dcdcdc;
     }
@@ -72,18 +87,6 @@
       text-align: center;
       line-height: 40px;
     }
-
-    .controls {
-      padding: 1rem;
-      background: #ccc;
-      display: flex;
-      justify-content: space-around;
-    }
-
-    button {
-      padding: 0.5rem 1rem;
-      font-size: 1rem;
-    }
   </style>
 </head>
 <body>
@@ -101,10 +104,10 @@
   </div>
 
   <div id="gameArea">
-    <div id="minesContainer"></div>
     <div id="elevator">
       <div id="elevatorBox">0</div>
     </div>
+    <div id="minesContainer"></div>
   </div>
 
   <script>
