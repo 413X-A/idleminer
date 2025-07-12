@@ -1,27 +1,210 @@
 <!DOCTYPE html>
 <html lang="de">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Idle Miner Tycoon - Arbeiter & Aufzug Demo</title>
-<link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8">
+  <title>Idle Miner Tycoon</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background-color: #f0f0f0;
+    }
+
+    header {
+      background-color: #333;
+      color: white;
+      text-align: center;
+      padding: 1rem;
+      font-size: 2rem;
+    }
+
+    .scoreboard {
+      display: flex;
+      justify-content: space-around;
+      background: #444;
+      color: white;
+      padding: 1rem;
+      font-size: 1.2rem;
+    }
+
+    #gameArea {
+      display: flex;
+      position: relative;
+      height: 80vh;
+      overflow-y: scroll;
+      background: #dcdcdc;
+    }
+
+    #minesContainer {
+      flex: 1;
+      padding: 1rem;
+    }
+
+    .mine {
+      background: #8b5e3c;
+      border: 2px solid #5a3b1d;
+      padding: 1rem;
+      margin-bottom: 1rem;
+      position: relative;
+      height: 120px;
+    }
+
+    .worker {
+      position: absolute;
+      bottom: 10px;
+      width: 20px;
+      height: 40px;
+      background: yellow;
+    }
+
+    #elevator {
+      width: 50px;
+      background: #999;
+      position: relative;
+    }
+
+    #elevatorBox {
+      position: absolute;
+      width: 100%;
+      height: 40px;
+      background: #555;
+      color: white;
+      text-align: center;
+      line-height: 40px;
+    }
+
+    .controls {
+      padding: 1rem;
+      background: #ccc;
+      display: flex;
+      justify-content: space-around;
+    }
+
+    button {
+      padding: 0.5rem 1rem;
+      font-size: 1rem;
+    }
+  </style>
 </head>
 <body>
-
-<h1>Idle Miner Tycoon (Demo)</h1>
-<div id="gold">Gold: 0</div>
-<div id="buttons">
-  <button onclick="buyMine()">Neue Mine kaufen (Kosten: <span id="mineCost">100</span>)</button>
-  <button onclick="upgradeElevator()">Aufzug upgraden (Kosten: <span id="elevatorCost">200</span>)</button>
-</div>
-
-<div class="game-container">
-  <div class="elevator-shaft">
-    <div id="elevator">⬇️</div>
+  <header>Idle Miner Tycoon</header>
+  <div class="scoreboard">
+    <div>Ressourcen: <span id="resources">0</span></div>
+    <div>Geld: <span id="money">0</span></div>
+    <div>Score: <span id="score">0</span></div>
   </div>
-  <div class="mines" id="mines"></div>
-</div>
 
-<script src="script.js"></script>
+  <div class="controls">
+    <button onclick="buyUpgrade()">Upgrade kaufen (10 Ressourcen)</button>
+    <button onclick="hireWorker()">Arbeiter anheuern (50 Geld)</button>
+    <button onclick="unlockMine()">Neue Mine freischalten (100 Geld)</button>
+  </div>
+
+  <div id="gameArea">
+    <div id="minesContainer"></div>
+    <div id="elevator">
+      <div id="elevatorBox">0</div>
+    </div>
+  </div>
+
+  <script>
+    let resources = 0;
+    let money = 0;
+    let score = 0;
+    let elevatorCapacity = 10;
+    let elevatorLoad = 0;
+    let elevatorY = 0;
+    let elevatorDirection = 1; // 1 down, -1 up
+    let mines = [];
+    let mineCost = 100;
+    let upgradeLevel = 1;
+
+    const minesContainer = document.getElementById("minesContainer");
+    const elevatorBox = document.getElementById("elevatorBox");
+
+    function updateUI() {
+      document.getElementById("resources").textContent = Math.floor(resources);
+      document.getElementById("money").textContent = Math.floor(money);
+      document.getElementById("score").textContent = Math.floor(score);
+      elevatorBox.textContent = elevatorLoad;
+    }
+
+    function unlockMine() {
+      if (money < mineCost) return;
+      money -= mineCost;
+      mineCost *= 1.5;
+      const mine = {
+        resourceStored: 0,
+        efficiency: 1 + mines.length * 0.2,
+        element: document.createElement("div")
+      };
+
+      const el = mine.element;
+      el.className = "mine";
+      el.innerHTML = `<div class="worker"></div>`;
+      mines.push(mine);
+      minesContainer.appendChild(el);
+    }
+
+    function buyUpgrade() {
+      if (resources < 10) return;
+      resources -= 10;
+      upgradeLevel++;
+      elevatorCapacity += 5;
+    }
+
+    function hireWorker() {
+      if (money < 50) return;
+      money -= 50;
+      // For simplicity, we increase mine efficiency instead of real workers
+      mines.forEach(m => m.efficiency += 0.1);
+    }
+
+    function animateWorkers() {
+      mines.forEach((mine, index) => {
+        const worker = mine.element.querySelector(".worker");
+        let pos = 0;
+        let direction = 1;
+        setInterval(() => {
+          pos += direction * 2;
+          if (pos >= 180 || pos <= 0) direction *= -1;
+          worker.style.left = pos + "px";
+          if (pos === 0) mine.resourceStored += 0.1 * mine.efficiency * upgradeLevel;
+        }, 100);
+      });
+    }
+
+    function runElevator() {
+      const height = mines.length * 140;
+      setInterval(() => {
+        elevatorY += elevatorDirection * 2;
+        elevatorBox.style.top = elevatorY + "px";
+
+        const mineIndex = Math.floor(elevatorY / 140);
+        const mine = mines[mineIndex];
+
+        if (mine && elevatorDirection === 1) {
+          let canTake = Math.min(elevatorCapacity - elevatorLoad, mine.resourceStored);
+          elevatorLoad += canTake;
+          mine.resourceStored -= canTake;
+        }
+
+        if (elevatorY >= height || elevatorY <= 0) {
+          if (elevatorY <= 0 && elevatorLoad > 0) {
+            resources += elevatorLoad;
+            money += elevatorLoad * 0.5;
+            score += elevatorLoad;
+            elevatorLoad = 0;
+          }
+          elevatorDirection *= -1;
+        }
+        updateUI();
+      }, 100);
+    }
+
+    animateWorkers();
+    runElevator();
+    updateUI();
+  </script>
 </body>
 </html>
