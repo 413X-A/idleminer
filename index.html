@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="de">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Idle Miner 2.5D</title>
+    <link rel="stylesheet" href="index_style.css" />
+</head>
+
+<body>
+    <h1>💎 Idle Miner</h1>
+
+    <div class="menu">
+        <button class="button" onclick="showPlaceholder('start')">Starten</button>
+        <button class="button" onclick="showPlaceholder('load')">Laden</button>
+        <button class="button" onclick="showPlaceholder('info')">Infos</button>
+    </div>
+
+    <div class="mine-container">
+        <div class="gold-block" id="goldBlock"></div>
+    </div>
+
+    <div class="placeholder-text" id="placeholderText"></div>
+
+    <div class="ui" id="gameUI" style="display:none;">
+        <div class="stats">Gold: <span id="gold">0</span></div>
+        <button class="button" onclick="mineGold()">Graben</button>
+    </div>
+
+    <script src="index_script.js"></script>
+</body>
+
+</html>
