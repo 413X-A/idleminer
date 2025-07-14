@@ -16,46 +16,187 @@
   </div>
 
   <div class="worlds-container">
+
+    <!-- Klassische Welten -->
     <div class="world" style="--world-color:#a0c4ff" onclick="selectWorld('Felsental')">
       <h2>Felsental</h2>
-      <p>Die sanfte blaue Welt mit leichten Hügeln und ersten Minen.</p>
-    </div>
-    <div class="world" style="--world-color:#ffadad" onclick="selectWorld('Feuerberge')">
-      <h2>Feuerberge</h2>
-      <p>Heiße Vulkanlandschaften, gefüllt mit seltenen Erzen.</p>
-    </div>
-    <div class="world" style="--world-color:#caffbf" onclick="selectWorld('Kristallhöhlen')">
-      <h2>Kristallhöhlen</h2>
-      <p>Glitzernde Höhlen voller funkelnder Kristalle und Edelsteine.</p>
-    </div>
-    <div class="world" style="--world-color:#ffd6a5" onclick="selectWorld('Sonnendüne')">
-      <h2>Sonnendüne</h2>
-      <p>Weite Wüsten mit verborgenen Schätzen unter dem Sand.</p>
-    </div>
-    <div class="world" style="--world-color:#9bf6ff" onclick="selectWorld('Eiswälder')">
-      <h2>Eiswälder</h2>
-      <p>Kalte, frostige Welten mit seltenen Eismineralien.</p>
-    </div>
-    <div class="world" style="--world-color:#bdb2ff" onclick="selectWorld('Mondplateau')">
-      <h2>Mondplateau</h2>
-      <p>Surreale Landschaften mit mystischen Ressourcen.</p>
-    </div>
-    <div class="world" style="--world-color:#ffc6ff" onclick="selectWorld('Lavagruben')">
-      <h2>Lavagruben</h2>
-      <p>Glühende Tiefen voller wertvoller Erze und Magma.</p>
-    </div>
-    <div class="world" style="--world-color:#fffffc" onclick="selectWorld('Nebelland')">
-      <h2>Nebelland</h2>
-      <p>Verhüllte Täler mit geheimnisvollen Mineralien.</p>
+      <p>Sanfte Hügel und erste Minen.</p>
     </div>
     <div class="world" style="--world-color:#ffcb77" onclick="selectWorld('Goldklippen')">
       <h2>Goldklippen</h2>
-      <p>Reiche Goldminen an steilen Klippen und Schluchten.</p>
+      <p>Steile Klippen voller Goldadern.</p>
     </div>
+    <div class="world" style="--world-color:#caffbf" onclick="selectWorld('Kristallhöhlen')">
+      <h2>Kristallhöhlen</h2>
+      <p>Glitzernde Edelsteine im Untergrund.</p>
+    </div>
+    <div class="world" style="--world-color:#ffd6a5" onclick="selectWorld('Sonnendüne')">
+      <h2>Sonnendüne</h2>
+      <p>Heiße Wüste mit verborgenen Schätzen.</p>
+    </div>
+    <div class="world" style="--world-color:#bdb2ff" onclick="selectWorld('Mondplateau')">
+      <h2>Mondplateau</h2>
+      <p>Surreale Landschaften mit seltenen Erzen.</p>
+    </div>
+    <div class="world" style="--world-color:#fffffc" onclick="selectWorld('Nebelland')">
+      <h2>Nebelland</h2>
+      <p>Verhüllte Täler voller Geheimnisse.</p>
+    </div>
+
+    <!-- Feuer & Lava -->
+    <div class="world" style="--world-color:#ffadad" onclick="selectWorld('Feuerberge')">
+      <h2>Feuerberge</h2>
+      <p>Vulkanische Erze und glühende Hitze.</p>
+    </div>
+    <div class="world" style="--world-color:#ffc6ff" onclick="selectWorld('Lavagruben')">
+      <h2>Lavagruben</h2>
+      <p>Tiefe Magmagruben mit seltenen Mineralien.</p>
+    </div>
+    <div class="world" style="--world-color:#ff9e9e" onclick="selectWorld('Glutseen')">
+      <h2>Glutseen</h2>
+      <p>Flüssige Lavaflächen voller Energie.</p>
+    </div>
+    <div class="world" style="--world-color:#f08080" onclick="selectWorld('Aschelande')">
+      <h2>Aschelande</h2>
+      <p>Verbrannte Erde, rußige Mineralien.</p>
+    </div>
+    <div class="world" style="--world-color:#ff8c42" onclick="selectWorld('Feuerschlucht')">
+      <h2>Feuerschlucht</h2>
+      <p>Tiefe Schluchten voller Glutadern.</p>
+    </div>
+
+    <!-- Eis & Frost -->
+    <div class="world" style="--world-color:#9bf6ff" onclick="selectWorld('Eiswälder')">
+      <h2>Eiswälder</h2>
+      <p>Gefrorene Wälder mit Eismineralien.</p>
+    </div>
+    <div class="world" style="--world-color:#a2d2ff" onclick="selectWorld('Frostklippen')">
+      <h2>Frostklippen</h2>
+      <p>Steile Klippen voller Eisadern.</p>
+    </div>
+    <div class="world" style="--world-color:#ccefff" onclick="selectWorld('Gletscherhöhlen')">
+      <h2>Gletscherhöhlen</h2>
+      <p>Tiefe Eishöhlen mit blauen Kristallen.</p>
+    </div>
+    <div class="world" style="--world-color:#d0f4f7" onclick="selectWorld('Schneetal')">
+      <h2>Schneetal</h2>
+      <p>Weiße Täler mit Frostschätzen.</p>
+    </div>
+    <div class="world" style="--world-color:#b2e2f2" onclick="selectWorld('Polarlichtsteppe')">
+      <h2>Polarlichtsteppe</h2>
+      <p>Funkelnde Minerale unter Polarlichtern.</p>
+    </div>
+
+    <!-- Kristall & Edelstein -->
+    <div class="world" style="--world-color:#d5aaff" onclick="selectWorld('Amethystgruben')">
+      <h2>Amethystgruben</h2>
+      <p>Lila Steine tief im Gestein.</p>
+    </div>
+    <div class="world" style="--world-color:#fff799" onclick="selectWorld('Bernsteintal')">
+      <h2>Bernsteintal</h2>
+      <p>Goldgelbe Edelsteine und Harze.</p>
+    </div>
+    <div class="world" style="--world-color:#7fffd4" onclick="selectWorld('Aquamarinsee')">
+      <h2>Aquamarinsee</h2>
+      <p>Türkise Steine am Grund eines Sees.</p>
+    </div>
+    <div class="world" style="--world-color:#fb6f92" onclick="selectWorld('Rubinschlucht')">
+      <h2>Rubinschlucht</h2>
+      <p>Rote Juwelen zwischen Felsen.</p>
+    </div>
+    <div class="world" style="--world-color:#bbd0ff" onclick="selectWorld('Saphirhöhle')">
+      <h2>Saphirhöhle</h2>
+      <p>Tiefblaue Edelsteine in dunklen Höhlen.</p>
+    </div>
+
+    <!-- Magisch & mystisch -->
+    <div class="world" style="--world-color:#b5ead7" onclick="selectWorld('Feenwald')">
+      <h2>Feenwald</h2>
+      <p>Leuchtende Pilze und Magiesteine.</p>
+    </div>
+    <div class="world" style="--world-color:#e4c1f9" onclick="selectWorld('Zaubertal')">
+      <h2>Zaubertal</h2>
+      <p>Mystische Kristalle und alte Runen.</p>
+    </div>
+    <div class="world" style="--world-color:#fdffb6" onclick="selectWorld('Lichtwiesen')">
+      <h2>Lichtwiesen</h2>
+      <p>Funkelnde Blüten mit Magieerz.</p>
+    </div>
+    <div class="world" style="--world-color:#f6dfeb" onclick="selectWorld('Trauminsel')">
+      <h2>Trauminsel</h2>
+      <p>Seltene Traumkristalle im Sand.</p>
+    </div>
+    <div class="world" style="--world-color:#c9ada7" onclick="selectWorld('Runenberge')">
+      <h2>Runenberge</h2>
+      <p>Alte Zeichen in Stein und Erz.</p>
+    </div>
+
+    <!-- Mond, Stern & Schatten -->
+    <div class="world" style="--world-color:#cbc0d3" onclick="selectWorld('Sternental')">
+      <h2>Sternental</h2>
+      <p>Sternenstaub in dunklen Tälern.</p>
+    </div>
+    <div class="world" style="--world-color:#d6d6f5" onclick="selectWorld('Lunarfelsen')">
+      <h2>Lunarfelsen</h2>
+      <p>Silbrige Mineralien vom Mond.</p>
+    </div>
+    <div class="world" style="--world-color:#b8bedd" onclick="selectWorld('Nachthügel')">
+      <h2>Nachthügel</h2>
+      <p>Dunkle Edelsteine unter Sternenlicht.</p>
+    </div>
+    <div class="world" style="--world-color:#9999cc" onclick="selectWorld('Schattenmine')">
+      <h2>Schattenmine</h2>
+      <p>Dunkel glänzende Mineralien tief im Berg.</p>
+    </div>
+    <div class="world" style="--world-color:#ccccff" onclick="selectWorld('Nebelstern')">
+      <h2>Nebelstern</h2>
+      <p>Glitzernde Steine in magischen Nebeln.</p>
+    </div>
+
+    <!-- Unterwelt & Abgrund -->
+    <div class="world" style="--world-color:#3c2f2f" onclick="selectWorld('Düstergruben')">
+      <h2>Düstergruben</h2>
+      <p>Schwarze Erze in ewiger Dunkelheit.</p>
+    </div>
+    <div class="world" style="--world-color:#6e4b3a" onclick="selectWorld('Tiefe Kluft')">
+      <h2>Tiefe Kluft</h2>
+      <p>Abgründe voller unbekannter Schätze.</p>
+    </div>
+    <div class="world" style="--world-color:#5c5470" onclick="selectWorld('Grabenreich')">
+      <h2>Grabenreich</h2>
+      <p>Dunkle Gesteinsschichten mit alten Fossilien.</p>
+    </div>
+    <div class="world" style="--world-color:#4e3d42" onclick="selectWorld('Abgrundtal')">
+      <h2>Abgrundtal</h2>
+      <p>Gefährliche Minen am Rand der Welt.</p>
+    </div>
+    <div class="world" style="--world-color:#6d597a" onclick="selectWorld('Höllenschacht')">
+      <h2>Höllenschacht</h2>
+      <p>Tiefster Schacht mit glühendem Erz.</p>
+    </div>
+
+    <!-- Wasser & Küste -->
     <div class="world" style="--world-color:#a2d2ff" onclick="selectWorld('Sturmküste')">
       <h2>Sturmküste</h2>
-      <p>Wilde Küstenregion mit seltenen Meeresmineralien.</p>
+      <p>Seltene Mineralien an rauen Klippen.</p>
     </div>
+    <div class="world" style="--world-color:#99e2b4" onclick="selectWorld('Koralleninsel')">
+      <h2>Koralleninsel</h2>
+      <p>Bunte Steine zwischen Riffen.</p>
+    </div>
+    <div class="world" style="--world-color:#90dbf4" onclick="selectWorld('Wellental')">
+      <h2>Wellental</h2>
+      <p>Schätze unter sandigen Buchten.</p>
+    </div>
+    <div class="world" style="--world-color:#77aaff" onclick="selectWorld('Meeresgraben')">
+      <h2>Meeresgraben</h2>
+      <p>Seltene Erze tief unter Wasser.</p>
+    </div>
+    <div class="world" style="--world-color:#55a630" onclick="selectWorld('Mangrovenbucht')">
+      <h2>Mangrovenbucht</h2>
+      <p>Wurzeln schützen versteckte Mineralien.</p>
+    </div>
+
   </div>
 
   <div class="placeholder-text" id="placeholderText"></div>
