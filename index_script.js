@@ -7,7 +7,7 @@ function showPlaceholder(action) {
     let text = '';
 
     switch (action) {
-        case 'spielmenue':
+        case 'hauptmenue':
             text = '⛏️ Das Hauptmenü wird geöffnet!';
             break;
         case 'load':
