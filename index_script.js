@@ -29,7 +29,7 @@ function showPlaceholder(action) {
     }, 3000);
 
     // Weiterleitung nach kurzer Verzögerung
-    if (action === 'start') {
+    if (action === 'spielmenue') {
         setTimeout(() => {
             window.location.href = "hauptmenue.html";
         }, 1500); // z. B. 1.5 Sekunden warten
