@@ -1,16 +1,4 @@
-let gold = 0;
 let gameStarted = false;
-
-function updateUI() {
-    document.getElementById('gold').innerText = gold;
-}
-
-function mineGold() {
-    gold += 1;
-    animateGoldBlock("bounce");
-    updateUI();
-}
-
 
 
 // 🆕 Platzhaltertext anzeigen
@@ -19,8 +7,8 @@ function showPlaceholder(action) {
     let text = '';
 
     switch (action) {
-        case 'start':
-            text = '⛏️ Das Spiel wurde gestartet. Viel Spaß!';
+        case 'spielmenue':
+            text = '⛏️ Das Hauptmenü wird geöffnet!';
             break;
         case 'load':
             text = '📂 Ladefunktion ist noch nicht verfügbar.';
@@ -43,7 +31,7 @@ function showPlaceholder(action) {
     // Weiterleitung nach kurzer Verzögerung
     if (action === 'start') {
         setTimeout(() => {
-            window.location.href = "spiel.html";
+            window.location.href = "hauptmenue.html";
         }, 1500); // z. B. 1.5 Sekunden warten
     }
 }
