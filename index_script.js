@@ -11,9 +11,7 @@ function mineGold() {
     updateUI();
 }
 
-function startGame() {
-    window.location.href = "spiel.html"
-}
+
 
 // 🆕 Platzhaltertext anzeigen
 function showPlaceholder(action) {
@@ -22,7 +20,6 @@ function showPlaceholder(action) {
 
     switch (action) {
         case 'start':
-            startGame();
             text = '⛏️ Das Spiel wurde gestartet. Viel Spaß!';
             break;
         case 'load':
@@ -38,10 +35,19 @@ function showPlaceholder(action) {
     placeholder.textContent = text;
     placeholder.classList.add('visible');
 
+    // Automatisch nach 3 Sekunden ausblenden
     setTimeout(() => {
-    placeholder.classList.remove('visible');
-  }, 3000);
+        placeholder.classList.remove('visible');
+    }, 3000);
+
+    // Weiterleitung nach kurzer Verzögerung
+    if (action === 'start') {
+        setTimeout(() => {
+            window.location.href = "spiel.html";
+        }, 1500); // z. B. 1.5 Sekunden warten
+    }
 }
+
 
 
 // Animationen
