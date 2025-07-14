@@ -224,14 +224,18 @@ function starteLastenaufzug() {
     aktiv = false;
   }
 
-  function fahreZuMine(mine) {
-    return new Promise(resolve => {
-      const top = mine.offsetTop;
-      aufzug.style.transition = "top 1s linear";
-      aufzug.style.top = `${top}px`;
-      setTimeout(resolve, 1000);
-    });
-  }
+function fahreZuMine(mine) {
+  return new Promise(resolve => {
+    const mineRect = mine.getBoundingClientRect();
+    const containerRect = document.getElementById("aufzugSpalte").getBoundingClientRect();
+    const relativeTop = mineRect.top - containerRect.top + (mine.offsetHeight / 2) - (aufzug.offsetHeight / 2);
+
+    aufzug.style.transition = "top 1s linear";
+    aufzug.style.top = `${relativeTop}px`;
+    setTimeout(resolve, 1000);
+  });
+}
+
 
   function fahreNachOben() {
     return new Promise(resolve => {
@@ -271,8 +275,5 @@ function starteLastenaufzug() {
   }
 
   // Starte den Zyklus alle 15 Sekunden (15000 ms)
-  setInterval(fahreAufzug, 1000);
-
-  // Optional: Sofort einmal starten, damit es nicht 15 Sekunden warten muss
-  fahreAufzug();
+  setInterval(fahreAufzug, 5000);
 }
