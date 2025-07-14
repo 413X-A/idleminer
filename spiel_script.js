@@ -32,7 +32,7 @@ function showPlaceholder(action) {
     let text = '';
 
     switch (action) {
-        case 'hauptseite':
+        case 'hauptmenue':
             text = 'ℹ️ Idle Miner Hauptseite!';
             break;
         case 'settings':
@@ -51,9 +51,9 @@ function showPlaceholder(action) {
     }, 3000);
 
     // Verzögerte Weiterleitung nur bei "hauptseite"
-    if (action === 'hauptseite') {
+    if (action === 'hauptmenue') {
         setTimeout(() => {
-            window.location.href = "index.html";
+            window.location.href = "hauptmenue.html";
         }, 1500); // Warte 1.5 Sekunden
     }
 }
