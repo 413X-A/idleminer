@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Idle Miner - Weltenauswahl</title>
+  <link rel="stylesheet" href="index_style.css" />
+</head>
+<body>
+  <h1>💎 Idle Miner - Weltenauswahl</h1>
+
+  <div class="menu">
+    <button class="button" onclick="showPlaceholder('start')">Starten</button>
+    <button class="button" onclick="showPlaceholder('load')">Laden</button>
+    <button class="button" onclick="showPlaceholder('info')">Infos</button>
+  </div>
+
+  <div class="worlds-container">
+    <div class="world" style="--world-color:#a0c4ff" onclick="selectWorld('Felsental')">
+      <h2>Felsental</h2>
+      <p>Die sanfte blaue Welt mit leichten Hügeln und ersten Minen.</p>
+    </div>
+    <div class="world" style="--world-color:#ffadad" onclick="selectWorld('Feuerberge')">
+      <h2>Feuerberge</h2>
+      <p>Heiße Vulkanlandschaften, gefüllt mit seltenen Erzen.</p>
+    </div>
+    <div class="world" style="--world-color:#caffbf" onclick="selectWorld('Kristallhöhlen')">
+      <h2>Kristallhöhlen</h2>
+      <p>Glitzernde Höhlen voller funkelnder Kristalle und Edelsteine.</p>
+    </div>
+    <div class="world" style="--world-color:#ffd6a5" onclick="selectWorld('Sonnendüne')">
+      <h2>Sonnendüne</h2>
+      <p>Weite Wüsten mit verborgenen Schätzen unter dem Sand.</p>
+    </div>
+    <div class="world" style="--world-color:#9bf6ff" onclick="selectWorld('Eiswälder')">
+      <h2>Eiswälder</h2>
+      <p>Kalte, frostige Welten mit seltenen Eismineralien.</p>
+    </div>
+    <div class="world" style="--world-color:#bdb2ff" onclick="selectWorld('Mondplateau')">
+      <h2>Mondplateau</h2>
+      <p>Surreale Landschaften mit mystischen Ressourcen.</p>
+    </div>
+    <div class="world" style="--world-color:#ffc6ff" onclick="selectWorld('Lavagruben')">
+      <h2>Lavagruben</h2>
+      <p>Glühende Tiefen voller wertvoller Erze und Magma.</p>
+    </div>
+    <div class="world" style="--world-color:#fffffc" onclick="selectWorld('Nebelland')">
+      <h2>Nebelland</h2>
+      <p>Verhüllte Täler mit geheimnisvollen Mineralien.</p>
+    </div>
+    <div class="world" style="--world-color:#ffcb77" onclick="selectWorld('Goldklippen')">
+      <h2>Goldklippen</h2>
+      <p>Reiche Goldminen an steilen Klippen und Schluchten.</p>
+    </div>
+    <div class="world" style="--world-color:#a2d2ff" onclick="selectWorld('Sturmküste')">
+      <h2>Sturmküste</h2>
+      <p>Wilde Küstenregion mit seltenen Meeresmineralien.</p>
+    </div>
+  </div>
+
+  <div class="placeholder-text" id="placeholderText"></div>
+
+  <script src="index_script.js"></script>
+</body>
+</html>
