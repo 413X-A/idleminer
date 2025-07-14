@@ -171,3 +171,61 @@ h1 {
 .gold-block.animate-bounce {
   animation: bounce 0.6s ease-out;
 }
+
+
+
+
+/* -------- Medie Screen -------- */
+
+@media screen and (max-width: 480px) {
+  body {
+    justify-content: flex-start;
+    padding-top: 20px;
+    height: auto;
+  }
+
+  h1 {
+    font-size: 1.8rem;
+    text-align: center;
+    margin: 10px 0;
+  }
+
+  .menu {
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .button {
+    width: 90%;
+    font-size: 1rem;
+    padding: 10px;
+  }
+
+  .ui {
+    gap: 8px;
+  }
+
+  .stats {
+    font-size: 1rem;
+  }
+
+  .mine-container {
+    width: 90%;
+    height: 100px;
+    box-shadow: 6px 6px 0px #1e293b;
+    transform: perspective(400px) rotateX(6deg);
+    margin: 16px 0;
+  }
+
+  .gold-block {
+    width: 50px;
+    height: 50px;
+    bottom: 15px;
+  }
+
+  .placeholder-text {
+    font-size: 1rem;
+    padding: 4px 10px;
+  }
+}
