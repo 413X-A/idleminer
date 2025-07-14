@@ -26,6 +26,38 @@ window.addEventListener("DOMContentLoaded", () => {
 });
 
 
+// 🆕 Platzhaltertext anzeigen
+function showPlaceholder(action) {
+    const placeholder = document.getElementById('placeholderText');
+    let text = '';
+
+    switch (action) {
+        case 'hauptseite':
+            text = 'ℹ️ Idle Miner Hauptseite!';
+            break;
+        case 'settings':
+            text = '📂 Einstellungen sind noch nicht verfügbar.';
+            break;
+        default:
+            text = '';
+    }
+
+    placeholder.textContent = text;
+    placeholder.classList.add('visible');
+
+    // Automatisch ausblenden
+    setTimeout(() => {
+        placeholder.classList.remove('visible');
+    }, 3000);
+
+    // Verzögerte Weiterleitung nur bei "hauptseite"
+    if (action === 'hauptseite') {
+        setTimeout(() => {
+            window.location.href = "index.html";
+        }, 1500); // Warte 1.5 Sekunden
+    }
+}
+
 
 
 
