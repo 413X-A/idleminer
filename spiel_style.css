@@ -189,9 +189,10 @@ h1 {
   }
 
   .menu {
-    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    width: 100%;
     align-items: center;
-    gap: 10px;
   }
 
   .button {
@@ -200,30 +201,52 @@ h1 {
     padding: 10px;
   }
 
-  .ui {
-    gap: 8px;
-  }
-
-  .stats {
-    font-size: 1rem;
-  }
-
   .mine-container {
-    width: 90%;
-    height: 100px;
-    box-shadow: 6px 6px 0px #1e293b;
-    transform: perspective(400px) rotateX(6deg);
+    width: 100%;
+    flex-direction: row;
+    align-items: flex-start;
+    height: auto;
     margin: 16px 0;
   }
 
-  .gold-block {
-    width: 50px;
-    height: 50px;
-    bottom: 15px;
+  .spalte_aufzug {
+    width: 12%;
+    min-width: 30px;
+  }
+
+  .spalte_schacht {
+    width: 78%;
+    min-width: 200px;
+  }
+
+  .spalte_wand {
+    width: 10%;
+    min-width: 20px;
+  }
+
+  .arbeiter {
+    width: 40px;
+    height: 40px;
+    left: 12%; /* Startet nach der Aufzug-Spalte */
+    top: 50%;
+    transform: translateY(-50%);
+  }
+
+  #lastenaufzug {
+    width: 25px;
+    height: 35px;
+    left: calc(6% - 12.5px); /* mittig in der Aufzug-Spalte */
+  }
+
+  .scoreboard {
+    font-size: 1rem;
+    margin-bottom: 8px;
+    padding: 6px 12px;
   }
 
   .placeholder-text {
-    font-size: 1rem;
-    padding: 4px 10px;
+    font-size: 0.95rem;
+    padding: 4px 8px;
   }
 }
+
