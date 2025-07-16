@@ -77,52 +77,54 @@ function speichereSpielstand() {
     scores: scores  // Scores pro Thema/Ressource speichern
   };
 
-  // Speichern im localStorage
-  localStorage.setItem("spielstand", JSON.stringify(spielstand));
-  localStorage.setItem("scores", JSON.stringify(scores)); // Optional separat speichern
+  // Zusätzlich: Anzahl der Minen pro Welt speichern
+  const currentWorld = gameSettings.world || "default";
+  let worldMinenStr = localStorage.getItem("worldMinen") || "{}";
+  let worldMinen = JSON.parse(worldMinenStr);
+  worldMinen[currentWorld] = minen.length;
+  localStorage.setItem("worldMinen", JSON.stringify(worldMinen));
 
-  // Ausgabe in Konsole
+  // Spielstand und Scores speichern
+  localStorage.setItem("spielstand", JSON.stringify(spielstand));
+  localStorage.setItem("scores", JSON.stringify(scores)); // optional separat
+
+  // Debug-Ausgaben
   console.log("Spielstand gespeichert:", spielstand);
   console.log(`Aktuelles Thema: ${currentTheme}, Aktuelle Ressource: ${currentResource}`);
   console.log("Scores pro Thema/Ressource:", scores);
+  console.log("Anzahl Minen pro Welt gespeichert:", worldMinen);
 }
-
-
-
-
 
 
 // Überprüfen
 console.log("localStorage spielstand vorhanden?", localStorage.getItem("spielstand"));
 
 function ladeSpielstand() {
+  // Spielstand und gameSettings aus localStorage laden
   const gespeicherterStandStr = localStorage.getItem("spielstand");
   const gameSettingsStr = localStorage.getItem("gameSettings");
-
   const stand = gespeicherterStandStr ? JSON.parse(gespeicherterStandStr) : null;
   const settings = gameSettingsStr ? JSON.parse(gameSettingsStr) : {};
 
-  // Werte aus gameSettings oder fallback auf einzelne localStorage-Werte oder Default
-  const gewaehlteWelt = settings.world || localStorage.getItem('selectedWorld') || "keine";
+  // Welt, Thema und Ressource aus gameSettings oder fallback
+  const gewaehlteWelt = settings.world || localStorage.getItem('selectedWorld') || "default";
   const gewaehltesThema = settings.theme || localStorage.getItem('selectedTheme') || "keine";
   const gewaehlteRessource = settings.resource || localStorage.getItem('selectedResource') || "keine";
 
-  // Einzelne Keys immer synchron im localStorage halten
+  // Einzelne Werte synchron halten
   localStorage.setItem("selectedWorld", gewaehlteWelt);
   localStorage.setItem("selectedTheme", gewaehltesThema);
   localStorage.setItem("selectedResource", gewaehlteRessource);
 
-  console.log("Gewählte Welt:", gewaehlteWelt);
-  console.log("Gewähltes Thema:", gewaehltesThema);
-  console.log("Ressource:", gewaehlteRessource);
+  console.log("🎮 Lade Spielstand für Welt:", gewaehlteWelt);
+  console.log("Thema:", gewaehltesThema, " | Ressource:", gewaehlteRessource);
 
   if (!stand) {
-    console.warn("Kein Spielstand im localStorage gefunden.");
-    return;
+    console.warn("⚠️ Kein gespeicherter Spielstand gefunden – starte mit Standardwerten.");
   }
 
-  // Score aus gespeicherten Scores holen und globale score Variable setzen
-  const scores = stand.scores || {};
+  // Score aus gespeicherten Scores holen
+  const scores = (stand && stand.scores) || {};
   score = scores[gewaehltesThema] || 0;
 
   // Score im UI anzeigen
@@ -131,16 +133,27 @@ function ladeSpielstand() {
     scoreElement.textContent = `${gewaehlteRessource}: ${score}`;
   }
 
-  // Minen laden und ggf. fehlende Minen erzeugen
-  const minendaten = Array.isArray(stand.minen) ? stand.minen : [];
-  const vorhandeneMinen = document.querySelectorAll("#schachtSpalte .alle_minen-block").length;
-  const fehlendeMinen = minendaten.length - vorhandeneMinen;
+  // -----------------------------
+  // Anzahl Minen für aktuelle Welt laden
+  let worldMinenStr = localStorage.getItem("worldMinen") || "{}";
+  let worldMinen = JSON.parse(worldMinenStr);
+  let gespeicherteMinenAnzahl = worldMinen[gewaehlteWelt] || 1;
 
+  // Aktuell im DOM vorhandene Minen zählen
+  const vorhandeneMinen = document.querySelectorAll("#schachtSpalte .alle_minen-block").length;
+  const fehlendeMinen = gespeicherteMinenAnzahl - vorhandeneMinen;
+
+  console.log(`🪓 Gespeicherte Anzahl Minen für Welt "${gewaehlteWelt}":`, gespeicherteMinenAnzahl);
+  console.log("Vorhandene Minen im DOM:", vorhandeneMinen, " | Fehlende Minen:", fehlendeMinen);
+
+  // Fehlende Minen erzeugen
   for (let i = 0; i < fehlendeMinen; i++) {
     neueMineFreischalten();
   }
 
-  // Minen mit gespeicherten Daten füllen
+  // -----------------------------
+  // Gespeicherte Minendaten (falls vorhanden) wiederherstellen
+  const minendaten = (stand && Array.isArray(stand.minen)) ? stand.minen : [];
   minendaten.forEach((mineData, index) => {
     const mineBlock = document.querySelectorAll("#schachtSpalte .alle_minen-block")[index];
     if (!mineBlock) return;
@@ -152,15 +165,18 @@ function ladeSpielstand() {
       mineBlock.appendChild(depot);
     }
 
+    // Ressourcen wiederherstellen
     const ressourcen = parseInt(mineData.ressourcen, 10) || 0;
     depot.dataset.ressourcen = ressourcen;
     depot.textContent = ressourcen > 0 ? `+${ressourcen}` : "";
 
+    // Arbeiter wiederherstellen
     const arbeiterAnzahl = parseInt(mineData.arbeiter, 10) || 0;
     for (let i = 0; i < arbeiterAnzahl; i++) {
       kaufeArbeiter(mineBlock);
     }
 
+    // Falls Arbeiter vorhanden, Kaufbutton entfernen
     if (arbeiterAnzahl > 0) {
       const button = mineBlock.querySelector(".arbeiter-kaufen-button");
       if (button) button.remove();
@@ -168,7 +184,10 @@ function ladeSpielstand() {
   });
 
   updateAufzugWandHoehe();
+
+  console.log("✅ Spielstand vollständig geladen.");
 }
+
 
 
 
