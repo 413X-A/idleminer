@@ -201,9 +201,11 @@ function showPlaceholder(action) {
   const placeholder = document.getElementById('placeholderText');
   let text = '';
   switch (action) {
-    case 'hauptmenue': text = 'ℹ️ Idle Miner Hauptseite!'; break;
-    case 'settings': text = '📂 Einstellungen sind noch nicht verfügbar.'; break;
-  default: 
+    case 'hauptmenue': text = 'ℹ️ Idle Miner Hauptseite!'; 
+      break;
+    case 'settings': text = '📂 Einstellungen sind noch nicht verfügbar.'; 
+      break;
+    default: 
       text = '';
   }
   placeholder.textContent = text;
