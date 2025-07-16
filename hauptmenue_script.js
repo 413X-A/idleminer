@@ -7,6 +7,12 @@ function showPlaceholder(action) {
   let text = '';
 
   switch (action) {
+    case 'startseite':
+      text = '⛏️ Die Startseite wird geöffnet';
+      setTimeout(() => {
+        window.location.href = 'index.html';
+      }, 1000);
+      break;
     case 'start':
       text = '⛏️ Das Spiel wurde gestartet. Viel Spaß!';
       break;
