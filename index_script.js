@@ -16,6 +16,10 @@ function showPlaceholder(action) {
         case 'info':
             text = 'ℹ️ Idle Miner Version 1.0 – Sammle Ressourcen und erweitere deine Minen!';
             break;
+        case 'reset':
+            text = '⛏️ Dein Fortschritt wurde zurückgesetzt!';
+            localStorage.clear();
+            break;
         default:
             text = '';
     }
